@@ -17,8 +17,22 @@ This is the repository demostrate how to convert a pdf file to audio file using 
 ## Features
 
 - **PyPDF2:** Read .pdf file and write a .txt file.
-- **texttospeech:** Read .txt file and convert .mp3 file. To  do this:
+- **texttospeech from Google Cloud:** Read .txt file and convert .mp3 file. To  do this:
     1. Initiate client:
         ```
           client = texttospeech.TextToSpeechClient()
         ```
+    2. Select the input type to synthesis:
+        ```
+          synthesis_input = texttospeech.SynthesisInput(text=text)
+        ```
+    3. Build the voice request, select the language code and the voice gender:
+        ```
+         voice = texttospeech.VoiceSelectionParams(language_code="en-US", ssml_gender=texttospeech.SsmlVoiceGender.NEUTRAL)
+        ```
+    4. Select the output audio type:
+        ```
+          audio_config = texttospeech.AudioConfig(audio_encoding=texttospeech.AudioEncoding.MP3)
+        ```
+        
+       
